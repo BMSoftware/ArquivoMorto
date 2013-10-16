@@ -68,7 +68,7 @@ public class Usuario implements java.io.Serializable {
         this.setor = setor;
     }
 
-    @Column(name = "nome_usuario", nullable = false, length = 150)
+    @Column(name = "nome_usuario", nullable = false, length = 150, unique = true)
     public String getNomeUsuario() {
         return this.nomeUsuario;
     }
