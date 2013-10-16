@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Bruno
  */
-public class UsuarioDAOImp implements UsuarioDAO {
+public class UsuarioDAOHib implements UsuarioDAO {
 
     private Session session;
 
