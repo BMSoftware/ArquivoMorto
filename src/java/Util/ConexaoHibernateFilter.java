@@ -1,6 +1,5 @@
 package Util;
 
-import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -23,7 +22,7 @@ public class ConexaoHibernateFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException {
         try {
             this.sf.getCurrentSession().beginTransaction();
             chain.doFilter(request, response);
