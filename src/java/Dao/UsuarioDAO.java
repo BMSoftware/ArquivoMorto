@@ -18,7 +18,7 @@ public interface UsuarioDAO {
 
     public void excluir(Usuario usuario);
 
-    public Usuario getUsuario(int idUsuario);
+    public Usuario getUsuario(Integer idUsuario);
 
     public Usuario getUsuarioNome(String nomeUsuario);
 

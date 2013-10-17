@@ -18,7 +18,7 @@ public interface SalaDAO {
 
     public void excluir(Sala sala);
 
-    public Sala getSala(int idSala);
+    public Sala getSala(Integer idSala);
 
     public List<Sala> list();
 }

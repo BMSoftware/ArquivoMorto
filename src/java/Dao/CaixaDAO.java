@@ -18,7 +18,7 @@ public interface CaixaDAO {
 
     public void excluir(Caixa caixa);
 
-    public Caixa getCaixa(int idCaixa);
+    public Caixa getCaixa(Integer idCaixa);
 
     public List<Caixa> list();
 }

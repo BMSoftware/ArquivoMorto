@@ -33,7 +33,7 @@ public class ArquivoDAOHib implements ArquivoDAO {
     }
 
     @Override
-    public Arquivo getArquivo(int idArquivo) {
+    public Arquivo getArquivo(Integer idArquivo) {
         return (Arquivo) this.session.get(Arquivo.class, idArquivo);
     }
 

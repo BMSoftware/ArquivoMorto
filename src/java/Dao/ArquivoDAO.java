@@ -18,7 +18,7 @@ public interface ArquivoDAO {
 
     public void excluir(Arquivo arquivo);
 
-    public Arquivo getArquivo(int idArquivo);
+    public Arquivo getArquivo(Integer idArquivo);
 
     public List<Arquivo> list();
 }

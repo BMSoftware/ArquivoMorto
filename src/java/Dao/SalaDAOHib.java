@@ -33,7 +33,7 @@ public class SalaDAOHib implements SalaDAO {
     }
 
     @Override
-    public Sala getSala(int idSala) {
+    public Sala getSala(Integer idSala) {
         return (Sala) this.session.get(Sala.class, idSala);
     }
 

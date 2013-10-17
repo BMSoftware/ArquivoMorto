@@ -35,7 +35,7 @@ public class UsuarioDAOHib implements UsuarioDAO {
     }
 
     @Override
-    public Usuario getUsuario(int idUsuario) {
+    public Usuario getUsuario(Integer idUsuario) {
         return (Usuario) this.session.get(Usuario.class, idUsuario);
     }
 

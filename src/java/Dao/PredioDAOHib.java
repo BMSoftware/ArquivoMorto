@@ -33,7 +33,7 @@ public class PredioDAOHib implements PredioDAO {
     }
 
     @Override
-    public Predio getPredio(int idPredio) {
+    public Predio getPredio(Integer idPredio) {
         return (Predio) this.session.get(Predio.class, idPredio);
     }
 

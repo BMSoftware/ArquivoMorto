@@ -18,7 +18,7 @@ public interface PredioDAO {
 
     public void excluir(Predio predio);
 
-    public Predio getPredio(int idPredio);
+    public Predio getPredio(Integer idPredio);
 
     public List<Predio> list();
 }

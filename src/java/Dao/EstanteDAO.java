@@ -18,7 +18,7 @@ public interface EstanteDAO {
 
     public void excluir(Estante estante);
 
-    public Estante getEstante(int idEstante);
+    public Estante getEstante(Integer idEstante);
 
     public List<Estante> list();
 }

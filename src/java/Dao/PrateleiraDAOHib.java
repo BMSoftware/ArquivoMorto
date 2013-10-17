@@ -33,7 +33,7 @@ public class PrateleiraDAOHib implements PrateleiraDAO {
     }
 
     @Override
-    public Prateleira getPrateleira(int idPrateleira) {
+    public Prateleira getPrateleira(Integer idPrateleira) {
         return (Prateleira) this.session.get(Prateleira.class, idPrateleira);
     }
 

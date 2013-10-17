@@ -89,6 +89,4 @@ public class Arquivo implements java.io.Serializable {
         }
         return true;
     }
-    
-    
 }

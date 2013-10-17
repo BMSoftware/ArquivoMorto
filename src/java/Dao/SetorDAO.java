@@ -18,7 +18,7 @@ public interface SetorDAO {
 
     public void excluir(Setor setor);
 
-    public Setor getSetor(int idSetor);
+    public Setor getSetor(Integer idSetor);
 
     public List<Setor> list();
 }

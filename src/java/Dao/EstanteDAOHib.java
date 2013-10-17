@@ -33,7 +33,7 @@ public class EstanteDAOHib implements EstanteDAO {
     }
 
     @Override
-    public Estante getEstante(int idEstante) {
+    public Estante getEstante(Integer idEstante) {
         return (Estante) this.session.get(Estante.class, idEstante);
     }
 

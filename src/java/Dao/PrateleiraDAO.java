@@ -18,7 +18,7 @@ public interface PrateleiraDAO {
 
     public void excluir(Prateleira prateleira);
 
-    public Prateleira getPrateleira(int idPrateleira);
+    public Prateleira getPrateleira(Integer idPrateleira);
 
     public List<Prateleira> list();
 }

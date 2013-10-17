@@ -33,7 +33,7 @@ public class SetorDAOHib implements SetorDAO {
     }
 
     @Override
-    public Setor getSetor(int idSetor) {
+    public Setor getSetor(Integer idSetor) {
         return (Setor) this.session.get(Setor.class, idSetor);
     }
 

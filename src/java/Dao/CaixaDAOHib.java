@@ -33,7 +33,7 @@ public class CaixaDAOHib implements CaixaDAO {
     }
 
     @Override
-    public Caixa getCaixa(int idCaixa) {
+    public Caixa getCaixa(Integer idCaixa) {
         return (Caixa) this.session.get(Caixa.class, idCaixa);
     }
 
