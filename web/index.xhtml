@@ -3,12 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Arquivo Morto</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h1>Arquivo Morto</h1>
         <br />
-        <h:link outcome="welcomePrimefaces" value="Página de boas-vindas do Primefaces" />
+        <h:form>
+            <h:commandButton action="#{usuarioBean.novo()}" value="Cadastrar usuários"/>
+        </h:form>
     </h:body>
 </html>
 
