@@ -1,7 +1,7 @@
 package Beans;
 
-import Entidade.Setor;
-import RegraDeNegocio.SetorRN;
+import Entidade.Sala;
+import RegraDeNegocio.SalaRN;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -12,18 +12,18 @@ import javax.faces.convert.FacesConverter;
  *
  * @author Bruno
  */
-@ManagedBean(name = "setorConverter")
-@FacesConverter(value = "setorConverter")
-public class SetorConverter implements Converter{
+@ManagedBean(name = "salaConverter")
+@FacesConverter(value = "salaConverter")
+public class SalaConverter implements Converter{
 
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
-        return new SetorRN().getSetor(new Integer(string));
+        return new SalaRN().getSala(new Integer(string));
     }
 
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object o) {
-        return ((Setor)o).getIdSetor().toString();
+        return ((Sala)o).getIdSala().toString();
     }
     
 }

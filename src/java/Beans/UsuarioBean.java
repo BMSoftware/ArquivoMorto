@@ -42,6 +42,7 @@ public class UsuarioBean {
         UsuarioRN usuarioRN = new UsuarioRN();
         usuarioRN.salvar(this.usuario);
         usuario = new Usuario();
+        confirmaSenha = "";
         return "usuario";
     }
 

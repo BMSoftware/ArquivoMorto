@@ -1,7 +1,7 @@
 package Beans;
 
-import Entidade.Setor;
-import RegraDeNegocio.SetorRN;
+import Entidade.Predio;
+import RegraDeNegocio.PredioRN;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -12,18 +12,18 @@ import javax.faces.convert.FacesConverter;
  *
  * @author Bruno
  */
-@ManagedBean(name = "setorConverter")
-@FacesConverter(value = "setorConverter")
-public class SetorConverter implements Converter{
+@ManagedBean(name = "predioConverter")
+@FacesConverter(value = "predioConverter")
+public class PredioConverter implements Converter{
 
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
-        return new SetorRN().getSetor(new Integer(string));
+        return new PredioRN().getPredio(new Integer(string));
     }
 
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object o) {
-        return ((Setor)o).getIdSetor().toString();
+        return ((Predio)o).getIdPredio().toString();
     }
     
 }
