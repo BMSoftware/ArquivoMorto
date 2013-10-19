@@ -31,7 +31,8 @@
                                redisplay="true"/>
                 
                 <h:outputLabel value="Setor:" for="setor"/>
-                <h:selectOneMenu id="setor" value="#{usuarioBean.usuario.setor}" >
+                <h:selectOneMenu id="setor" value="#{usuarioBean.usuario.setor}" 
+                                 converter="#{setorConverter}">
                     <f:selectItems value="#{setorBean.setores}"/>
                 </h:selectOneMenu>
                 
