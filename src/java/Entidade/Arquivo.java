@@ -66,9 +66,10 @@ public class Arquivo implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + (this.idArquivo != null ? this.idArquivo.hashCode() : 0);
-        hash = 97 * hash + (this.conteudoArquivo != null ? this.conteudoArquivo.hashCode() : 0);
+        int hash = 7;
+        hash = 53 * hash + (this.idArquivo != null ? this.idArquivo.hashCode() : 0);
+        hash = 53 * hash + (this.conteudoArquivo != null ? this.conteudoArquivo.hashCode() : 0);
+        hash = 53 * hash + (this.caixas != null ? this.caixas.hashCode() : 0);
         return hash;
     }
 
@@ -85,6 +86,9 @@ public class Arquivo implements java.io.Serializable {
             return false;
         }
         if ((this.conteudoArquivo == null) ? (other.conteudoArquivo != null) : !this.conteudoArquivo.equals(other.conteudoArquivo)) {
+            return false;
+        }
+        if (this.caixas != other.caixas && (this.caixas == null || !this.caixas.equals(other.caixas))) {
             return false;
         }
         return true;

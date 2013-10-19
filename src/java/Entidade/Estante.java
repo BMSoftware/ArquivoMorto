@@ -1,9 +1,7 @@
 package Entidade;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -79,5 +77,39 @@ public class Estante implements java.io.Serializable {
 
     public void setPrateleiras(List<Prateleira> prateleiras) {
         this.prateleiras = prateleiras;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + (this.idEstante != null ? this.idEstante.hashCode() : 0);
+        hash = 41 * hash + (this.sala != null ? this.sala.hashCode() : 0);
+        hash = 41 * hash + (this.nomeEstante != null ? this.nomeEstante.hashCode() : 0);
+        hash = 41 * hash + (this.prateleiras != null ? this.prateleiras.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Estante other = (Estante) obj;
+        if (this.idEstante != other.idEstante && (this.idEstante == null || !this.idEstante.equals(other.idEstante))) {
+            return false;
+        }
+        if (this.sala != other.sala && (this.sala == null || !this.sala.equals(other.sala))) {
+            return false;
+        }
+        if ((this.nomeEstante == null) ? (other.nomeEstante != null) : !this.nomeEstante.equals(other.nomeEstante)) {
+            return false;
+        }
+        if (this.prateleiras != other.prateleiras && (this.prateleiras == null || !this.prateleiras.equals(other.prateleiras))) {
+            return false;
+        }
+        return true;
     }
 }

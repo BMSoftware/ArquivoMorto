@@ -63,4 +63,34 @@ public class Predio implements java.io.Serializable {
     public void setSalas(List<Sala> salas) {
         this.salas = salas;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + (this.idPredio != null ? this.idPredio.hashCode() : 0);
+        hash = 13 * hash + (this.nomePredio != null ? this.nomePredio.hashCode() : 0);
+        hash = 13 * hash + (this.salas != null ? this.salas.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Predio other = (Predio) obj;
+        if (this.idPredio != other.idPredio && (this.idPredio == null || !this.idPredio.equals(other.idPredio))) {
+            return false;
+        }
+        if ((this.nomePredio == null) ? (other.nomePredio != null) : !this.nomePredio.equals(other.nomePredio)) {
+            return false;
+        }
+        if (this.salas != other.salas && (this.salas == null || !this.salas.equals(other.salas))) {
+            return false;
+        }
+        return true;
+    }
 }

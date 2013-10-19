@@ -78,4 +78,38 @@ public class Prateleira implements java.io.Serializable {
     public void setCaixas(List<Caixa> caixas) {
         this.caixas = caixas;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + (this.idPrateleira != null ? this.idPrateleira.hashCode() : 0);
+        hash = 29 * hash + (this.estante != null ? this.estante.hashCode() : 0);
+        hash = 29 * hash + (this.nomePrateleira != null ? this.nomePrateleira.hashCode() : 0);
+        hash = 29 * hash + (this.caixas != null ? this.caixas.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Prateleira other = (Prateleira) obj;
+        if (this.idPrateleira != other.idPrateleira && (this.idPrateleira == null || !this.idPrateleira.equals(other.idPrateleira))) {
+            return false;
+        }
+        if (this.estante != other.estante && (this.estante == null || !this.estante.equals(other.estante))) {
+            return false;
+        }
+        if ((this.nomePrateleira == null) ? (other.nomePrateleira != null) : !this.nomePrateleira.equals(other.nomePrateleira)) {
+            return false;
+        }
+        if (this.caixas != other.caixas && (this.caixas == null || !this.caixas.equals(other.caixas))) {
+            return false;
+        }
+        return true;
+    }
 }

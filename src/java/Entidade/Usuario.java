@@ -106,4 +106,46 @@ public class Usuario implements java.io.Serializable {
     public void setPermissaos(List<Permissao> permissaos) {
         this.permissaos = permissaos;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + (this.idUsuario != null ? this.idUsuario.hashCode() : 0);
+        hash = 17 * hash + (this.setor != null ? this.setor.hashCode() : 0);
+        hash = 17 * hash + (this.nomeUsuario != null ? this.nomeUsuario.hashCode() : 0);
+        hash = 17 * hash + (this.senhaUsuario != null ? this.senhaUsuario.hashCode() : 0);
+        hash = 17 * hash + (this.statusUsuario ? 1 : 0);
+        hash = 17 * hash + (this.permissaos != null ? this.permissaos.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (this.idUsuario != other.idUsuario && (this.idUsuario == null || !this.idUsuario.equals(other.idUsuario))) {
+            return false;
+        }
+        if (this.setor != other.setor && (this.setor == null || !this.setor.equals(other.setor))) {
+            return false;
+        }
+        if ((this.nomeUsuario == null) ? (other.nomeUsuario != null) : !this.nomeUsuario.equals(other.nomeUsuario)) {
+            return false;
+        }
+        if ((this.senhaUsuario == null) ? (other.senhaUsuario != null) : !this.senhaUsuario.equals(other.senhaUsuario)) {
+            return false;
+        }
+        if (this.statusUsuario != other.statusUsuario) {
+            return false;
+        }
+        if (this.permissaos != other.permissaos && (this.permissaos == null || !this.permissaos.equals(other.permissaos))) {
+            return false;
+        }
+        return true;
+    }
 }

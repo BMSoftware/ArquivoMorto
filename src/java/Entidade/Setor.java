@@ -74,4 +74,38 @@ public class Setor implements java.io.Serializable {
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + (this.idSetor != null ? this.idSetor.hashCode() : 0);
+        hash = 37 * hash + (this.nomeSetor != null ? this.nomeSetor.hashCode() : 0);
+        hash = 37 * hash + (this.caixas != null ? this.caixas.hashCode() : 0);
+        hash = 37 * hash + (this.usuarios != null ? this.usuarios.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Setor other = (Setor) obj;
+        if (this.idSetor != other.idSetor && (this.idSetor == null || !this.idSetor.equals(other.idSetor))) {
+            return false;
+        }
+        if ((this.nomeSetor == null) ? (other.nomeSetor != null) : !this.nomeSetor.equals(other.nomeSetor)) {
+            return false;
+        }
+        if (this.caixas != other.caixas && (this.caixas == null || !this.caixas.equals(other.caixas))) {
+            return false;
+        }
+        if (this.usuarios != other.usuarios && (this.usuarios == null || !this.usuarios.equals(other.usuarios))) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -89,4 +89,42 @@ public class Sala implements java.io.Serializable {
     public void setEstantes(List<Estante> estantes) {
         this.estantes = estantes;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + (this.idSala != null ? this.idSala.hashCode() : 0);
+        hash = 17 * hash + (this.predio != null ? this.predio.hashCode() : 0);
+        hash = 17 * hash + this.numeroSala;
+        hash = 17 * hash + (this.andarSala != null ? this.andarSala.hashCode() : 0);
+        hash = 17 * hash + (this.estantes != null ? this.estantes.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sala other = (Sala) obj;
+        if (this.idSala != other.idSala && (this.idSala == null || !this.idSala.equals(other.idSala))) {
+            return false;
+        }
+        if (this.predio != other.predio && (this.predio == null || !this.predio.equals(other.predio))) {
+            return false;
+        }
+        if (this.numeroSala != other.numeroSala) {
+            return false;
+        }
+        if ((this.andarSala == null) ? (other.andarSala != null) : !this.andarSala.equals(other.andarSala)) {
+            return false;
+        }
+        if (this.estantes != other.estantes && (this.estantes == null || !this.estantes.equals(other.estantes))) {
+            return false;
+        }
+        return true;
+    }
 }

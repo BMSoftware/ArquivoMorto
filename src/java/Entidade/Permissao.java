@@ -50,4 +50,30 @@ public class Permissao implements java.io.Serializable {
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + (this.nomePermissao != null ? this.nomePermissao.hashCode() : 0);
+        hash = 71 * hash + (this.usuarios != null ? this.usuarios.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Permissao other = (Permissao) obj;
+        if ((this.nomePermissao == null) ? (other.nomePermissao != null) : !this.nomePermissao.equals(other.nomePermissao)) {
+            return false;
+        }
+        if (this.usuarios != other.usuarios && (this.usuarios == null || !this.usuarios.equals(other.usuarios))) {
+            return false;
+        }
+        return true;
+    }
 }

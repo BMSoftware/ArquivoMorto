@@ -38,6 +38,7 @@ public class UsuarioBean {
             context.addMessage(null, facesMessage);
             return null;
         }
+        
         UsuarioRN usuarioRN = new UsuarioRN();
         usuarioRN.salvar(this.usuario);
 

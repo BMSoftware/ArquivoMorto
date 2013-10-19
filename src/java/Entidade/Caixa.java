@@ -124,4 +124,50 @@ public class Caixa implements java.io.Serializable {
     public void setArquivos(List<Arquivo> arquivos) {
         this.arquivos = arquivos;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + (this.idCaixa != null ? this.idCaixa.hashCode() : 0);
+        hash = 17 * hash + (this.prateleira != null ? this.prateleira.hashCode() : 0);
+        hash = 17 * hash + (this.setor != null ? this.setor.hashCode() : 0);
+        hash = 17 * hash + (this.nomeCaixa != null ? this.nomeCaixa.hashCode() : 0);
+        hash = 17 * hash + (this.prazoArquivamentoCaixa != null ? this.prazoArquivamentoCaixa.hashCode() : 0);
+        hash = 17 * hash + (this.dataArquivamentoCaixa != null ? this.dataArquivamentoCaixa.hashCode() : 0);
+        hash = 17 * hash + (this.arquivos != null ? this.arquivos.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Caixa other = (Caixa) obj;
+        if (this.idCaixa != other.idCaixa && (this.idCaixa == null || !this.idCaixa.equals(other.idCaixa))) {
+            return false;
+        }
+        if (this.prateleira != other.prateleira && (this.prateleira == null || !this.prateleira.equals(other.prateleira))) {
+            return false;
+        }
+        if (this.setor != other.setor && (this.setor == null || !this.setor.equals(other.setor))) {
+            return false;
+        }
+        if ((this.nomeCaixa == null) ? (other.nomeCaixa != null) : !this.nomeCaixa.equals(other.nomeCaixa)) {
+            return false;
+        }
+        if (this.prazoArquivamentoCaixa != other.prazoArquivamentoCaixa && (this.prazoArquivamentoCaixa == null || !this.prazoArquivamentoCaixa.equals(other.prazoArquivamentoCaixa))) {
+            return false;
+        }
+        if (this.dataArquivamentoCaixa != other.dataArquivamentoCaixa && (this.dataArquivamentoCaixa == null || !this.dataArquivamentoCaixa.equals(other.dataArquivamentoCaixa))) {
+            return false;
+        }
+        if (this.arquivos != other.arquivos && (this.arquivos == null || !this.arquivos.equals(other.arquivos))) {
+            return false;
+        }
+        return true;
+    }
 }
