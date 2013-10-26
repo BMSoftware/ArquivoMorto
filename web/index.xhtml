@@ -9,7 +9,13 @@
         <h1>Arquivo Morto</h1>
         <br />
         <h:form>
-            <h:commandButton action="#{usuarioBean.novo()}" value="Cadastrar usuários"/>
+            <h:commandButton action="#{caixaBean.novo()}" value="Cadastrar Caixas"/> 
+            <h:commandButton action="#{usuarioBean.novo()}" value="Cadastrar Usuários"/> 
+            <h:commandButton action="#{setorBean.novo()}" value="Cadastrar Setores"/>  
+            <h:commandButton action="#{prateleiraBean.novo()}" value="Cadastrar Prateleiras"/>  
+            <h:commandButton action="#{estanteBean.novo()}" value="Cadastrar Estantes"/>
+            <h:commandButton action="#{salaBean.novo()}" value="Cadastrar Salas"/>
+            <h:commandButton action="#{predioBean.novo()}" value="Cadastrar Predios"/>
         </h:form>
     </h:body>
 </html>

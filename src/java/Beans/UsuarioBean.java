@@ -31,14 +31,14 @@ public class UsuarioBean {
 
     public String salvar() {
         FacesContext context = FacesContext.getCurrentInstance();
-        
+
         String senha = this.usuario.getSenhaUsuario();
         if (!senha.equals(this.confirmaSenha)) {
             FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
             context.addMessage(null, facesMessage);
             return null;
         }
-        
+
         UsuarioRN usuarioRN = new UsuarioRN();
         usuarioRN.salvar(this.usuario);
         usuario = new Usuario();

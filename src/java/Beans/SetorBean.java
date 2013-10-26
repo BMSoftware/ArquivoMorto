@@ -19,13 +19,14 @@ public class SetorBean {
     private Setor setor = new Setor();
 
     public String novo() {
-        this.setor = new Setor();
+        setor = new Setor();
         return "publico/setor";
     }
 
     public String salvar() {
         SetorRN setorRN = new SetorRN();
         setorRN.salvar(setor);
+        setor = new Setor();
         return "setor";
     }
 

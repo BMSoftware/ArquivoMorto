@@ -8,12 +8,13 @@
     </h:head>
     <h:body>
         <h1>Cadastro de Usuários</h1>
-        <h:form id="cadastro">
+        <h:form id="cadastroUsuario">
             <h:messages/>
             <h:inputHidden value="#{usuarioBean.usuario.idUsuario}"/>
             <h:inputHidden value="#{usuarioBean.usuario.statusUsuario}"/>
 
             <h:panelGrid columns="2">
+                
                 <h:outputLabel value="Nome:" for="nome"/>
                 <h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nomeUsuario}" size="30"
                              maxlength="30" required="true" requiredMessage="Preencher o nome">
@@ -37,9 +38,8 @@
                 </h:selectOneMenu>
                 
             </h:panelGrid>
-
-            <h:commandButton action="#{usuarioBean.salvar()}" value="salvar">
-            </h:commandButton>
+            
+            <h:commandButton action="#{usuarioBean.salvar()}" value="Salvar"/>
             
         </h:form>
     </h:body>

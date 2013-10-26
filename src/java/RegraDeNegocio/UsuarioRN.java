@@ -28,6 +28,7 @@ public class UsuarioRN {
     public void salvar(Usuario usuario) {
         Integer idUsuario = usuario.getIdUsuario();
         if (idUsuario == null || idUsuario == 0) {
+            
             this.usuarioDAO.salvar(usuario);
         } else {
             this.usuarioDAO.atualizar(usuario);
