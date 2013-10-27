@@ -10,7 +10,7 @@
         type="javax.sql.DataSource"
         url="jdbc:mysql://localhost/arquivomorto_db"
         password="root"
-        username="teste"
+        username="root"
         validationQuery="SELECT 1"
         testOnBorrow="true"
         testWhileIdle="true"
