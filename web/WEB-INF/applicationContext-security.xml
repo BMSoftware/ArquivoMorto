@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+         xmlns:b="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+    <http>
+        <intercept-url pattern="/arquivo.jsf" access="ROLE_USER" />
+        <intercept-url pattern="/caixa.jsf" access="ROLE_USER" />
+        <intercept-url pattern="/estante.jsf" access="ROLE_USER" />
+        <intercept-url pattern="/index.jsf" access="ROLE_USER" />
+        <intercept-url pattern="/prateleira.jsf" access="ROLE_USER" />
+        <intercept-url pattern="/predio.jsf" access="ROLE_USER" />
+        <intercept-url pattern="/sala.jsf" access="ROLE_USER" />
+        <intercept-url pattern="/setor.jsf" access="ROLE_USER" />
+        <intercept-url pattern="/usuario.jsf" access="ROLE_USER" />
+        <form-login login-page="/login.jsf" authentication-failure-url="/login.jsf?erro=true" />
+        <logout/>
+        <remember-me />
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+            <jdbc-user-service 
+                data-source-ref="arquivoMortoDataSource"
+                authorities-by-username-query="SELECT u.nome_usuario, p.nome_permissao FROM usuario u, usuario_permissao p 
+						WHERE u.id_usuario = p.id_usuario AND u.nome_usuario = ?"
+                users-by-username-query="SELECT nome_usuario, senha_usuario, status_usuario FROM usuario WHERE nome_usuario = ?" />
+        </authentication-provider>
+    </authentication-manager>
+</b:beans>
