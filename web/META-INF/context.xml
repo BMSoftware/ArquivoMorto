@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/ArquivoMorto"/>
+<Context path="/ArquivoMorto" reloadable="true">
+    <Resource auth="Container" 
+              driverClassName="com.mysql.jdbc.Driver" 
+              maxActive="100" 
+              maxIdle="30" 
+              maxWait="10000" 
+              name="jdbc/ArquivoMortoDB" 
+              password="root" 
+              type="javax.sql.DataSource" 
+              url="jdbc:mysql://localhost:3306/arquivomorto_db" 
+              username="root"/>
+    <Resource auth="Container" mail.smtp.auth="true" mail.smtp.host="mail.servidor.com.br" mail.smtp.password="teste" mail.smtp.port="25" mail.smtp.user="teste@servidor.com.br" name="mail/Session" type="javax.mail.Session"/>
+</Context>
