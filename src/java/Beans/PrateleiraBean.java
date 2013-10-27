@@ -25,7 +25,7 @@ public class PrateleiraBean {
 
     public String novo() {
         prateleira = new Prateleira();
-        return "publico/prateleira";
+        return "prateleira";
     }
 
     public String salvar() {
@@ -35,7 +35,7 @@ public class PrateleiraBean {
         return "prateleira";
     }
 
-    public List<SelectItem> getSetores() {
+    public List<SelectItem> getPrateleiras() {
         List<SelectItem> lista = new ArrayList<SelectItem>();
         for (Prateleira prateleiraAtual : new PrateleiraRN().list()) {
             lista.add(new SelectItem(prateleiraAtual, prateleiraAtual.getNomePrateleira()));

@@ -3,6 +3,7 @@ package RegraDeNegocio;
 import Dao.CaixaDAO;
 import Dao.DAOFactory;
 import Entidade.Caixa;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,6 +25,7 @@ public class CaixaRN {
     public void salvar(Caixa caixa) {
         Integer idCaixa = caixa.getIdCaixa();
         if (idCaixa == null || idCaixa == 0) {
+            caixa.setDataArquivamentoCaixa(new Date(System.currentTimeMillis()));
             this.caixaDAO.salvar(caixa);
         } else {
             this.caixaDAO.atualizar(caixa);

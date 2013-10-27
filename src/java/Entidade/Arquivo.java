@@ -1,15 +1,13 @@
 package Entidade;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,7 +19,7 @@ public class Arquivo implements java.io.Serializable {
 
     private Integer idArquivo;
     private String conteudoArquivo;
-    private List<Caixa> caixas = new ArrayList<Caixa>();
+    private Caixa caixa;
 
     public Arquivo() {
     }
@@ -30,9 +28,9 @@ public class Arquivo implements java.io.Serializable {
         this.conteudoArquivo = conteudoArquivo;
     }
 
-    public Arquivo(String conteudoArquivo, List<Caixa> caixas) {
+    public Arquivo(String conteudoArquivo, Caixa caixa) {
         this.conteudoArquivo = conteudoArquivo;
-        this.caixas = caixas;
+        this.caixa = caixa;
     }
 
     @Id
@@ -55,21 +53,22 @@ public class Arquivo implements java.io.Serializable {
         this.conteudoArquivo = conteudoArquivo;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "arquivos")
-    public List<Caixa> getCaixas() {
-        return this.caixas;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_caixa", nullable = false)
+    public Caixa getCaixa() {
+        return this.caixa;
     }
 
-    public void setCaixas(List<Caixa> caixas) {
-        this.caixas = caixas;
+    public void setCaixa(Caixa caixa) {
+        this.caixa = caixa;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + (this.idArquivo != null ? this.idArquivo.hashCode() : 0);
-        hash = 53 * hash + (this.conteudoArquivo != null ? this.conteudoArquivo.hashCode() : 0);
-        hash = 53 * hash + (this.caixas != null ? this.caixas.hashCode() : 0);
+        int hash = 5;
+        hash = 11 * hash + (this.idArquivo != null ? this.idArquivo.hashCode() : 0);
+        hash = 11 * hash + (this.conteudoArquivo != null ? this.conteudoArquivo.hashCode() : 0);
+        hash = 11 * hash + (this.caixa != null ? this.caixa.hashCode() : 0);
         return hash;
     }
 
@@ -88,9 +87,10 @@ public class Arquivo implements java.io.Serializable {
         if ((this.conteudoArquivo == null) ? (other.conteudoArquivo != null) : !this.conteudoArquivo.equals(other.conteudoArquivo)) {
             return false;
         }
-        if (this.caixas != other.caixas && (this.caixas == null || !this.caixas.equals(other.caixas))) {
+        if (this.caixa != other.caixa && (this.caixa == null || !this.caixa.equals(other.caixa))) {
             return false;
         }
         return true;
     }
+
 }

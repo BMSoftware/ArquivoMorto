@@ -26,14 +26,14 @@ public class CaixaBean {
 
     public String novo() {
         caixa = new Caixa();
-        return "publico/caixa";
+        return "caixa";
     }
 
     public String salvar() {
         CaixaRN caixaRN = new CaixaRN();
         caixaRN.salvar(caixa);
         caixa = new Caixa();
-        return "caixa";
+        return "arquivo";
     }
 
     public Caixa getCaixa() {

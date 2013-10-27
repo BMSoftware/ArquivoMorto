@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro de Prateleiras</title>
+    </h:head>
+    <h:body>
+        <h1>Cadastro de Prateleiras</h1>
+        <h:form id="menu">
+            <h:commandButton action="#{caixaBean.novo()}" value="Cadastrar Caixas"/> 
+            <h:commandButton action="#{usuarioBean.novo()}" value="Cadastrar Usuários"/> 
+            <h:commandButton action="#{setorBean.novo()}" value="Cadastrar Setores"/>  
+            <h:commandButton action="#{prateleiraBean.novo()}" value="Cadastrar Prateleiras"/>  
+            <h:commandButton action="#{estanteBean.novo()}" value="Cadastrar Estantes"/>
+            <h:commandButton action="#{salaBean.novo()}" value="Cadastrar Salas"/>
+            <h:commandButton action="#{predioBean.novo()}" value="Cadastrar Predios"/>
+        </h:form>
+        <h:form id="cadastroPrateleira">
+            <h:messages/>
+            <h:inputHidden value="#{prateleiraBean.prateleira.idPrateleira}"/> 
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nome:" for="nome"/>
+                <h:inputText id="nome" label="Nome" value="#{prateleiraBean.prateleira.nomePrateleira}" size="30"
+                             maxlength="30" required="true" requiredMessage="Preencher o nome da Prateleira">
+                    <f:validateLength minimum="5" maximum="30"/>
+                </h:inputText>
+                <h:outputLabel value="Estante:" for="estante"/>
+                <h:selectOneMenu id="estante" value="#{prateleiraBean.prateleira.estante}" 
+                                 converter="#{estanteConverter}">
+                    <f:selectItems value="#{estanteBean.estantes}"/>
+                </h:selectOneMenu>
+            </h:panelGrid>
+            <h:commandButton action="#{prateleiraBean.salvar()}" value="Salvar"/>
+        </h:form>
+    </h:body>
+</html>
+

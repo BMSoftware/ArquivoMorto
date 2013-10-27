@@ -25,7 +25,7 @@ public class SalaBean {
 
     public String novo() {
         sala = new Sala();
-        return "publico/sala";
+        return "sala";
     }
 
     public String salvar() {
@@ -35,7 +35,7 @@ public class SalaBean {
         return "sala";
     }
 
-    public List<SelectItem> getSetores() {
+    public List<SelectItem> getSalas() {
         List<SelectItem> lista = new ArrayList<SelectItem>();
         for (Sala salaAtual : new SalaRN().list()) {
             lista.add(new SelectItem(salaAtual, String.valueOf(salaAtual.getNumeroSala())));

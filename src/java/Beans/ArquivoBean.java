@@ -2,8 +2,11 @@ package Beans;
 
 import Entidade.Arquivo;
 import RegraDeNegocio.ArquivoRN;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.event.ActionEvent;
 
 /**
  *
@@ -14,17 +17,31 @@ import javax.faces.bean.RequestScoped;
 public class ArquivoBean {
 
     private Arquivo arquivo = new Arquivo();
+    private List<Arquivo> listarArquivos;
+    private Arquivo arquivoSelecionado;
 
-    public String novo() {
-        arquivo = new Arquivo();
-        return "publico/arquivo";
+    public void prepararAdicionarArquivo(ActionEvent actionEvent) {
+        this.arquivo = new Arquivo();
     }
 
-    public String salvar() {
+//    public void prepararAlterarArquivo(ActionEvent actionEvent) {
+//        arquivo = (Arquivo) (listarArquivos.getRowData());
+//    }
+//
+//    public String excluirArquivos() {
+//        Arquivo arquivoTemp = (Arquivo) (listarArquivos.getRowData());
+//        ArquivoRN arquivoRN = new ArquivoRN();
+//        arquivoRN.excluir(arquivoTemp);
+//        return "arquivo";
+//    }
+    public void adicionarArquivo(ActionEvent actionEvent) {
         ArquivoRN arquivoRN = new ArquivoRN();
         arquivoRN.salvar(arquivo);
-        arquivo = new Arquivo();
-        return "arquivo";
+    }
+
+    public void alterarArquivo(ActionEvent actionEvent) {
+        ArquivoRN arquivoRN = new ArquivoRN();
+        arquivoRN.salvar(arquivo);
     }
 
     public Arquivo getArquivo() {
@@ -34,4 +51,18 @@ public class ArquivoBean {
     public void setArquivo(Arquivo arquivo) {
         this.arquivo = arquivo;
     }
+
+    public List<Arquivo> getListarArquivos() {
+        listarArquivos = new ArrayList<Arquivo>(new ArquivoRN().list());
+        return listarArquivos;
+    }
+
+    public Arquivo getArquivoSelecionado() {
+        return arquivoSelecionado;
+    }
+
+    public void setArquivoSelecionado(Arquivo arquivoSelecionado) {
+        this.arquivoSelecionado = arquivoSelecionado;
+    }
+
 }

@@ -20,7 +20,7 @@ public class SetorBean {
 
     public String novo() {
         setor = new Setor();
-        return "publico/setor";
+        return "setor";
     }
 
     public String salvar() {

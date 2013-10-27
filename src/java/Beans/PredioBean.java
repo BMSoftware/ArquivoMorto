@@ -20,7 +20,7 @@ public class PredioBean {
 
     public String novo() {
         predio = new Predio();
-        return "publico/predio";
+        return "predio";
     }
 
     public String salvar() {
@@ -29,7 +29,7 @@ public class PredioBean {
         return "predio";
     }
 
-    public List<SelectItem> getSetores() {
+    public List<SelectItem> getPredios() {
         List<SelectItem> lista = new ArrayList<SelectItem>();
         for (Predio predioAtual : new PredioRN().list()) {
             lista.add(new SelectItem(predioAtual, predioAtual.getNomePredio()));

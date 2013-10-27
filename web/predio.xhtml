@@ -8,23 +8,27 @@
     </h:head>
     <h:body>
         <h1>Cadastro de Predios</h1>
+        <h:form id="menu">
+            <h:commandButton action="#{caixaBean.novo()}" value="Cadastrar Caixas"/> 
+            <h:commandButton action="#{usuarioBean.novo()}" value="Cadastrar Usuários"/> 
+            <h:commandButton action="#{setorBean.novo()}" value="Cadastrar Setores"/>  
+            <h:commandButton action="#{prateleiraBean.novo()}" value="Cadastrar Prateleiras"/>  
+            <h:commandButton action="#{estanteBean.novo()}" value="Cadastrar Estantes"/>
+            <h:commandButton action="#{salaBean.novo()}" value="Cadastrar Salas"/>
+            <h:commandButton action="#{predioBean.novo()}" value="Cadastrar Predios"/>
+        </h:form>
         <h:form id="cadastroUsuario">
             <h:messages/>
-          <!--  <h:inputHidden value="#{predioBean.predio.idPredio}"/> -->
-
+            <h:inputHidden value="#{predioBean.predio.idPredio}"/> 
             <h:panelGrid columns="2">
-                
                 <h:outputLabel value="Nome:" for="nome"/>
                 <h:inputText id="nome" label="Nome" value="#{predioBean.predio.nomePredio}" size="30"
                              maxlength="30" required="true" requiredMessage="Preencher o nome do predio">
                     <f:validateLength minimum="5" maximum="30"/>
                 </h:inputText>
-                                
             </h:panelGrid>
-            
             <h:commandButton action="#{predioBean.salvar()}" value="Salvar"/>
-            
+            <br/>
         </h:form>
     </h:body>
 </html>
-

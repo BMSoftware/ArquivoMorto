@@ -26,7 +26,7 @@ public class UsuarioBean {
     public String novo() {
         this.usuario = new Usuario();
         this.usuario.setStatusUsuario(true);
-        return "publico/usuario";
+        return "usuario";
     }
 
     public String salvar() {

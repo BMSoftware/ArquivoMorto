@@ -25,7 +25,7 @@ public class EstanteBean {
 
     public String novo() {
         estante = new Estante();
-        return "publico/estante";
+        return "estante";
     }
 
     public String salvar() {
@@ -35,7 +35,7 @@ public class EstanteBean {
         return "estante";
     }
 
-    public List<SelectItem> getSetores() {
+    public List<SelectItem> getEstantes() {
         List<SelectItem> lista = new ArrayList<SelectItem>();
         for (Estante estanteAtual : new EstanteRN().list()) {
             lista.add(new SelectItem(estanteAtual, estanteAtual.getNomeEstante()));

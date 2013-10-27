@@ -11,9 +11,8 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -113,10 +112,7 @@ public class Caixa implements java.io.Serializable {
         this.dataArquivamentoCaixa = dataArquivamentoCaixa;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "caixa_arquivo", catalog = "arquivomorto_db", joinColumns = {
-        @JoinColumn(name = "id_caixa", nullable = false, updatable = false)}, inverseJoinColumns = {
-        @JoinColumn(name = "id_arquivo", nullable = false, updatable = false)})
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caixa")
     public List<Arquivo> getArquivos() {
         return this.arquivos;
     }
@@ -128,13 +124,13 @@ public class Caixa implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 17 * hash + (this.idCaixa != null ? this.idCaixa.hashCode() : 0);
-        hash = 17 * hash + (this.prateleira != null ? this.prateleira.hashCode() : 0);
-        hash = 17 * hash + (this.setor != null ? this.setor.hashCode() : 0);
-        hash = 17 * hash + (this.nomeCaixa != null ? this.nomeCaixa.hashCode() : 0);
-        hash = 17 * hash + (this.prazoArquivamentoCaixa != null ? this.prazoArquivamentoCaixa.hashCode() : 0);
-        hash = 17 * hash + (this.dataArquivamentoCaixa != null ? this.dataArquivamentoCaixa.hashCode() : 0);
-        hash = 17 * hash + (this.arquivos != null ? this.arquivos.hashCode() : 0);
+        hash = 97 * hash + (this.idCaixa != null ? this.idCaixa.hashCode() : 0);
+        hash = 97 * hash + (this.prateleira != null ? this.prateleira.hashCode() : 0);
+        hash = 97 * hash + (this.setor != null ? this.setor.hashCode() : 0);
+        hash = 97 * hash + (this.nomeCaixa != null ? this.nomeCaixa.hashCode() : 0);
+        hash = 97 * hash + (this.prazoArquivamentoCaixa != null ? this.prazoArquivamentoCaixa.hashCode() : 0);
+        hash = 97 * hash + (this.dataArquivamentoCaixa != null ? this.dataArquivamentoCaixa.hashCode() : 0);
+        hash = 97 * hash + (this.arquivos != null ? this.arquivos.hashCode() : 0);
         return hash;
     }
 
@@ -170,4 +166,5 @@ public class Caixa implements java.io.Serializable {
         }
         return true;
     }
+
 }

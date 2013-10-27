@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Vinculação de Arquivos</title>
+    </h:head>
+    <h:body>
+        <h1>Vinculação de Arquivos</h1>
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" />
+            
+            <p:dataTable id="tabela" var="arquivo" value="#{arquivoBean.listarArquivos}">
+                <p:column headerText="Descrição do Arquivo">
+                    <h:outputText value="#{arquivo.conteudoArquivo}"/>
+                </p:column>
+                <p:column headerText="Alterar" style="width: 10%">
+                    <p:commandButton id="botaoAlterar" update=":form:display" title="Alterar"
+                                     oncomplete="arquivoDialog.show()" value="Alterar">
+                        <f:setPropertyActionListener value="#{arquivo}" target="#{arquivoBean.arquivoSelecionado}"/>
+                    </p:commandButton>
+                </p:column>
+                <p:column headerText="Excluir">
+
+                </p:column>
+            </p:dataTable>
+            
+            <p:dialog header="Arquivo" widgetVar="arquivoDialog" resizable="false" id="arqDlg" 
+                      showEffect="fade" hideEffect="explode" modal="true">
+                <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
+                    <h:outputText value="Conteúdo" />  
+                    <h:outputText value="#{arquivoBean.arquivoSelecionado.conteudoArquivo}" style="font-weight:bold"/>
+                    <h:outputText value="Id" />  
+                    <h:outputText value="#{arquivoBean.arquivoSelecionado.idArquivo}" style="font-weight:bold"/>
+                    <p:commandButton update="tabela" oncomplete="arquivoDialog.hide()" actionListener="#{arquivoBean.adicionarArquivo}" value="Inserir"/>
+                    <p:commandButton update="tabela" oncomplete="arquivoDialog.hide()" actionListener="#{arquivoBean.alterarArquivo}" value="Alterar"/>
+                </h:panelGrid>  
+            </p:dialog>
+            
+        </h:form>
+    </h:body>
+</html>
+

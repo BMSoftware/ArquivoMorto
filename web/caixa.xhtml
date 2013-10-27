@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cadastro de Caixas</title>
+    </h:head>
+    <h:body>
+        <h1>Cadastro de Caixas</h1>
+        <h:form id="menu">
+            <h:commandButton action="#{caixaBean.novo()}" value="Cadastrar Caixas"/> 
+            <h:commandButton action="#{usuarioBean.novo()}" value="Cadastrar Usuários"/> 
+            <h:commandButton action="#{setorBean.novo()}" value="Cadastrar Setores"/>  
+            <h:commandButton action="#{prateleiraBean.novo()}" value="Cadastrar Prateleiras"/>  
+            <h:commandButton action="#{estanteBean.novo()}" value="Cadastrar Estantes"/>
+            <h:commandButton action="#{salaBean.novo()}" value="Cadastrar Salas"/>
+            <h:commandButton action="#{predioBean.novo()}" value="Cadastrar Predios"/>
+        </h:form>
+        <h:form id="cadastroCaixa">
+            <h:messages/>
+            <h:inputHidden value="#{caixaBean.caixa.idCaixa}"/> 
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nome:" for="nome"/>
+                <h:inputText id="nome" label="Nome" value="#{caixaBean.caixa.nomeCaixa}" size="30"
+                             maxlength="30" required="true" requiredMessage="Preencher o nome da caixa">
+                    <f:validateLength minimum="5" maximum="30"/>
+                </h:inputText>
+                <h:outputLabel value="Data Manter Arquivado:" for="dataManterArquivado"/>
+                <p:calendar id="dataManterArquivado" label="DataManterArquivado" value="#{caixaBean.caixa.prazoArquivamentoCaixa}" size="11"
+                            required="true" requiredMessage="Preencher a data que será preciso manter arquivado"
+                            pattern="dd/MM/yyyy" showOn="button"/>
+                <h:outputLabel value="Prateleira:" for="prateleira"/>
+                <h:selectOneMenu id="prateleira" value="#{caixaBean.caixa.prateleira}" 
+                                 converter="#{prateleiraConverter}">
+                    <f:selectItems value="#{prateleiraBean.prateleiras}"/>
+                </h:selectOneMenu>
+                <h:outputLabel value="Setor:" for="setor"/>
+                <h:selectOneMenu id="setor" value="#{caixaBean.caixa.setor}" 
+                                 converter="#{setorConverter}">
+                    <f:selectItems value="#{setorBean.setores}"/>
+                </h:selectOneMenu>
+
+                <h:commandButton action="#{caixaBean.salvar()}" value="Vincluar Arquivos"/>
+            </h:panelGrid>
+
+        </h:form>
+    </h:body>
+</html>
