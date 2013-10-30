@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<bean id="arquivoMortoDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName">
-			<value>java:comp/env/jdbc/ArquivoMortoDB</value>
-		</property>
+            <property name="jndiName">
+                <value>java:comp/env/jdbc/ArquivoMortoDB</value>
+            </property>
 	</bean> 	
 </beans>
 
