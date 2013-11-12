@@ -9,7 +9,7 @@
         maxWait="-1"
         type="javax.sql.DataSource"
         url="jdbc:mysql://localhost/arquivomorto_db"
-        password="root"
+        password="c0ntr073"
         username="root"
         validationQuery="SELECT 1"
         testOnBorrow="true"
