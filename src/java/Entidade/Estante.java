@@ -13,10 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.envers.Audited;
 
 /**
  * @autor Bruno
  */
+@Audited
 @Entity
 @Table(name = "estante", catalog = "arquivomorto_db")
 public class Estante implements java.io.Serializable {

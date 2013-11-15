@@ -11,10 +11,12 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.envers.Audited;
 
 /**
  * @author Bruno
  */
+@Audited
 @Entity
 @Table(name = "predio", catalog = "arquivomorto_db")
 public class Predio implements java.io.Serializable {
