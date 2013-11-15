@@ -14,12 +14,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.hibernate.envers.Audited;
 
 /**
  * @author Bruno
  */
-@Audited
 @Entity
 @Table(name = "usuario", catalog = "arquivomorto_db")
 public class Usuario implements java.io.Serializable {

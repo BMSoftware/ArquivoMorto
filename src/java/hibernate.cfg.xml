@@ -16,8 +16,5 @@
         <mapping class="Entidade.Permissao"/>
         <mapping class="Entidade.Usuario"/>
         <mapping class="Entidade.Caixa"/>
-        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-insert"/>
-        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-update"/>
-        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-delete"/>
     </session-factory>
 </hibernate-configuration>

@@ -16,12 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.hibernate.envers.Audited;
 
 /**
  * @author Bruno
  */
-@Audited
 @Entity
 @Table(name = "caixa", catalog = "arquivomorto_db")
 public class Caixa implements java.io.Serializable {

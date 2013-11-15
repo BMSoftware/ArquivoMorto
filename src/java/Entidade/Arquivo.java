@@ -9,12 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.hibernate.envers.Audited;
 
 /**
  * @author Bruno
  */
-@Audited
 @Entity
 @Table(name = "arquivo", catalog = "arquivomorto_db")
 public class Arquivo implements java.io.Serializable {

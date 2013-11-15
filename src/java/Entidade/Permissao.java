@@ -9,12 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import org.hibernate.envers.Audited;
 
 /**
  * @autor Bruno
  */
-@Audited
 @Entity
 @Table(name = "permissao", catalog = "arquivomorto_db")
 public class Permissao implements java.io.Serializable {
