@@ -9,10 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.envers.Audited;
 
 /**
  * @author Bruno
  */
+@Audited
 @Entity
 @Table(name = "arquivo", catalog = "arquivomorto_db")
 public class Arquivo implements java.io.Serializable {
@@ -20,6 +22,8 @@ public class Arquivo implements java.io.Serializable {
     private Integer idArquivo;
     private String conteudoArquivo;
     private Caixa caixa;
+    private TipoArquivo tipoArquivo;
+    private Usuario usuarioResponsavel;
 
     public Arquivo() {
     }
@@ -28,9 +32,11 @@ public class Arquivo implements java.io.Serializable {
         this.conteudoArquivo = conteudoArquivo;
     }
 
-    public Arquivo(String conteudoArquivo, Caixa caixa) {
+    public Arquivo(String conteudoArquivo, Caixa caixa, TipoArquivo tipoArquivo, Usuario usuarioResponsavel) {
         this.conteudoArquivo = conteudoArquivo;
         this.caixa = caixa;
+        this.tipoArquivo = tipoArquivo;
+        this.usuarioResponsavel = usuarioResponsavel;
     }
 
     @Id
@@ -63,12 +69,34 @@ public class Arquivo implements java.io.Serializable {
         this.caixa = caixa;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_tipo_arquivo", nullable = false)
+    public TipoArquivo getTipoArquivo() {
+        return tipoArquivo;
+    }
+
+    public void setTipoArquivo(TipoArquivo tipoArquivo) {
+        this.tipoArquivo = tipoArquivo;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario_responsavel", nullable = false)
+    public Usuario getUsuarioResponsavel() {
+        return usuarioResponsavel;
+    }
+
+    public void setUsuarioResponsavel(Usuario usuarioResponsavel) {
+        this.usuarioResponsavel = usuarioResponsavel;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 11 * hash + (this.idArquivo != null ? this.idArquivo.hashCode() : 0);
-        hash = 11 * hash + (this.conteudoArquivo != null ? this.conteudoArquivo.hashCode() : 0);
-        hash = 11 * hash + (this.caixa != null ? this.caixa.hashCode() : 0);
+        int hash = 3;
+        hash = 97 * hash + (this.idArquivo != null ? this.idArquivo.hashCode() : 0);
+        hash = 97 * hash + (this.conteudoArquivo != null ? this.conteudoArquivo.hashCode() : 0);
+        hash = 97 * hash + (this.caixa != null ? this.caixa.hashCode() : 0);
+        hash = 97 * hash + (this.tipoArquivo != null ? this.tipoArquivo.hashCode() : 0);
+        hash = 97 * hash + (this.usuarioResponsavel != null ? this.usuarioResponsavel.hashCode() : 0);
         return hash;
     }
 
@@ -88,6 +116,12 @@ public class Arquivo implements java.io.Serializable {
             return false;
         }
         if (this.caixa != other.caixa && (this.caixa == null || !this.caixa.equals(other.caixa))) {
+            return false;
+        }
+        if (this.tipoArquivo != other.tipoArquivo && (this.tipoArquivo == null || !this.tipoArquivo.equals(other.tipoArquivo))) {
+            return false;
+        }
+        if (this.usuarioResponsavel != other.usuarioResponsavel && (this.usuarioResponsavel == null || !this.usuarioResponsavel.equals(other.usuarioResponsavel))) {
             return false;
         }
         return true;

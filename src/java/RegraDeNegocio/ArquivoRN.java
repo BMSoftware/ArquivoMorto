@@ -1,8 +1,10 @@
 package RegraDeNegocio;
 
+import Beans.ContextoBean;
 import Dao.ArquivoDAO;
 import Dao.DAOFactory;
 import Entidade.Arquivo;
+import Util.ContextoUtil;
 import java.util.List;
 
 /**
@@ -24,6 +26,8 @@ public class ArquivoRN {
     public void salvar(Arquivo arquivo) {
         Integer idArquivo = arquivo.getIdArquivo();
         if (idArquivo == null || idArquivo == 0) {
+            ContextoBean contextoBean = ContextoUtil.getContextoBean();
+            arquivo.setUsuarioResponsavel(contextoBean.getUsuarioLogado());
             this.arquivoDAO.salvar(arquivo);
         } else {
             this.arquivoDAO.atualizar(arquivo);

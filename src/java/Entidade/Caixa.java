@@ -16,10 +16,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.envers.Audited;
 
 /**
  * @author Bruno
  */
+@Audited
 @Entity
 @Table(name = "caixa", catalog = "arquivomorto_db")
 public class Caixa implements java.io.Serializable {
@@ -27,6 +29,7 @@ public class Caixa implements java.io.Serializable {
     private Integer idCaixa;
     private Prateleira prateleira;
     private Setor setor;
+    private Usuario usuarioArquivou;
     private String nomeCaixa;
     private Date prazoArquivamentoCaixa;
     private Date dataArquivamentoCaixa;
@@ -35,17 +38,19 @@ public class Caixa implements java.io.Serializable {
     public Caixa() {
     }
 
-    public Caixa(Prateleira prateleira, Setor setor, String nomeCaixa, Date prazoArquivamentoCaixa, Date dataArquivamentoCaixa) {
+    public Caixa(Prateleira prateleira, Setor setor, Usuario usuarioArquivou, String nomeCaixa, Date prazoArquivamentoCaixa, Date dataArquivamentoCaixa) {
         this.prateleira = prateleira;
         this.setor = setor;
+        this.usuarioArquivou = usuarioArquivou;
         this.nomeCaixa = nomeCaixa;
         this.prazoArquivamentoCaixa = prazoArquivamentoCaixa;
         this.dataArquivamentoCaixa = dataArquivamentoCaixa;
     }
 
-    public Caixa(Prateleira prateleira, Setor setor, String nomeCaixa, Date prazoArquivamentoCaixa, Date dataArquivamentoCaixa, List<Arquivo> arquivos) {
+    public Caixa(Prateleira prateleira, Setor setor, Usuario usuarioArquivou, String nomeCaixa, Date prazoArquivamentoCaixa, Date dataArquivamentoCaixa, List<Arquivo> arquivos) {
         this.prateleira = prateleira;
         this.setor = setor;
+        this.usuarioArquivou = usuarioArquivou;
         this.nomeCaixa = nomeCaixa;
         this.prazoArquivamentoCaixa = prazoArquivamentoCaixa;
         this.dataArquivamentoCaixa = dataArquivamentoCaixa;
@@ -81,6 +86,16 @@ public class Caixa implements java.io.Serializable {
 
     public void setSetor(Setor setor) {
         this.setor = setor;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario_arquivou", nullable = false)
+    public Usuario getUsuarioArquivou() {
+        return usuarioArquivou;
+    }
+
+    public void setUsuarioArquivou(Usuario usuarioArquivou) {
+        this.usuarioArquivou = usuarioArquivou;
     }
 
     @Column(name = "nome_caixa", nullable = false, length = 150)
@@ -124,13 +139,14 @@ public class Caixa implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + (this.idCaixa != null ? this.idCaixa.hashCode() : 0);
-        hash = 97 * hash + (this.prateleira != null ? this.prateleira.hashCode() : 0);
-        hash = 97 * hash + (this.setor != null ? this.setor.hashCode() : 0);
-        hash = 97 * hash + (this.nomeCaixa != null ? this.nomeCaixa.hashCode() : 0);
-        hash = 97 * hash + (this.prazoArquivamentoCaixa != null ? this.prazoArquivamentoCaixa.hashCode() : 0);
-        hash = 97 * hash + (this.dataArquivamentoCaixa != null ? this.dataArquivamentoCaixa.hashCode() : 0);
-        hash = 97 * hash + (this.arquivos != null ? this.arquivos.hashCode() : 0);
+        hash = 53 * hash + (this.idCaixa != null ? this.idCaixa.hashCode() : 0);
+        hash = 53 * hash + (this.prateleira != null ? this.prateleira.hashCode() : 0);
+        hash = 53 * hash + (this.setor != null ? this.setor.hashCode() : 0);
+        hash = 53 * hash + (this.usuarioArquivou != null ? this.usuarioArquivou.hashCode() : 0);
+        hash = 53 * hash + (this.nomeCaixa != null ? this.nomeCaixa.hashCode() : 0);
+        hash = 53 * hash + (this.prazoArquivamentoCaixa != null ? this.prazoArquivamentoCaixa.hashCode() : 0);
+        hash = 53 * hash + (this.dataArquivamentoCaixa != null ? this.dataArquivamentoCaixa.hashCode() : 0);
+        hash = 53 * hash + (this.arquivos != null ? this.arquivos.hashCode() : 0);
         return hash;
     }
 
@@ -150,6 +166,9 @@ public class Caixa implements java.io.Serializable {
             return false;
         }
         if (this.setor != other.setor && (this.setor == null || !this.setor.equals(other.setor))) {
+            return false;
+        }
+        if (this.usuarioArquivou != other.usuarioArquivou && (this.usuarioArquivou == null || !this.usuarioArquivou.equals(other.usuarioArquivou))) {
             return false;
         }
         if ((this.nomeCaixa == null) ? (other.nomeCaixa != null) : !this.nomeCaixa.equals(other.nomeCaixa)) {

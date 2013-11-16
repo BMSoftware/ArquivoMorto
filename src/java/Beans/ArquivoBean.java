@@ -1,12 +1,15 @@
 package Beans;
 
 import Entidade.Arquivo;
+import Entidade.Caixa;
 import RegraDeNegocio.ArquivoRN;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -17,31 +20,28 @@ import javax.faces.event.ActionEvent;
 public class ArquivoBean {
 
     private Arquivo arquivo = new Arquivo();
-    private List<Arquivo> listarArquivos;
-    private Arquivo arquivoSelecionado;
+    @ManagedProperty(value = "#{caixaBean}")
+    private CaixaBean caixaBean;
+    private Caixa caixa;
 
-    public void prepararAdicionarArquivo(ActionEvent actionEvent) {
-        this.arquivo = new Arquivo();
+    public String novo() {
+        arquivo = new Arquivo();
+        return "arquivo";
     }
 
-//    public void prepararAlterarArquivo(ActionEvent actionEvent) {
-//        arquivo = (Arquivo) (listarArquivos.getRowData());
-//    }
-//
-//    public String excluirArquivos() {
-//        Arquivo arquivoTemp = (Arquivo) (listarArquivos.getRowData());
-//        ArquivoRN arquivoRN = new ArquivoRN();
-//        arquivoRN.excluir(arquivoTemp);
-//        return "arquivo";
-//    }
-    public void adicionarArquivo(ActionEvent actionEvent) {
+    public String salvar() {
         ArquivoRN arquivoRN = new ArquivoRN();
         arquivoRN.salvar(arquivo);
+        arquivo = new Arquivo();
+        return "arquivo";
     }
 
-    public void alterarArquivo(ActionEvent actionEvent) {
-        ArquivoRN arquivoRN = new ArquivoRN();
-        arquivoRN.salvar(arquivo);
+    public List<SelectItem> getArquivos() {
+        List<SelectItem> lista = new ArrayList<SelectItem>();
+        for (Arquivo arquivoAtual : new ArquivoRN().list()) {
+            lista.add(new SelectItem(arquivoAtual, arquivoAtual.getConteudoArquivo()));
+        }
+        return lista;
     }
 
     public Arquivo getArquivo() {
@@ -52,17 +52,23 @@ public class ArquivoBean {
         this.arquivo = arquivo;
     }
 
-    public List<Arquivo> getListarArquivos() {
-        listarArquivos = new ArrayList<Arquivo>(new ArquivoRN().list());
-        return listarArquivos;
+    public CaixaBean getCaixaBean() {
+        return caixaBean;
     }
 
-    public Arquivo getArquivoSelecionado() {
-        return arquivoSelecionado;
+    public void setCaixaBean(CaixaBean caixaBean) {
+        this.caixaBean = caixaBean;
     }
 
-    public void setArquivoSelecionado(Arquivo arquivoSelecionado) {
-        this.arquivoSelecionado = arquivoSelecionado;
+    public Caixa getCaixa() {
+        if (caixaBean != null) {
+            caixa = caixaBean.getCaixa();
+        }
+        return caixa;
+    }
+
+    public void setCaixa(Caixa caixa) {
+        this.caixa = caixa;
     }
 
 }

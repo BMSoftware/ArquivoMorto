@@ -1,6 +1,6 @@
 package Beans;
 
-import Entidade.Arquivo;
+import Entidade.Caixa;
 import RegraDeNegocio.CaixaRN;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
@@ -23,6 +23,6 @@ public class CaixaConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object o) {
-        return ((Arquivo) o).getIdArquivo().toString();
+        return ((Caixa) o).getIdCaixa().toString();
     }
 }

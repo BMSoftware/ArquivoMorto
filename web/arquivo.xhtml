@@ -2,43 +2,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Vinculação de Arquivos</title>
+        <title>Cadastro de Arquivos</title>
     </h:head>
     <h:body>
         <h1>Vinculação de Arquivos</h1>
-        <h:form id="form">
-            <p:growl id="msgs" showDetail="true" />
-            
-            <p:dataTable id="tabela" var="arquivo" value="#{arquivoBean.listarArquivos}">
-                <p:column headerText="Descrição do Arquivo">
-                    <h:outputText value="#{arquivo.conteudoArquivo}"/>
-                </p:column>
-                <p:column headerText="Alterar" style="width: 10%">
-                    <p:commandButton id="botaoAlterar" update=":form:display" title="Alterar"
-                                     oncomplete="arquivoDialog.show()" value="Alterar">
-                        <f:setPropertyActionListener value="#{arquivo}" target="#{arquivoBean.arquivoSelecionado}"/>
-                    </p:commandButton>
-                </p:column>
-                <p:column headerText="Excluir">
-
-                </p:column>
-            </p:dataTable>
-            
-            <p:dialog header="Arquivo" widgetVar="arquivoDialog" resizable="false" id="arqDlg" 
-                      showEffect="fade" hideEffect="explode" modal="true">
-                <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
-                    <h:outputText value="Conteúdo" />  
-                    <h:outputText value="#{arquivoBean.arquivoSelecionado.conteudoArquivo}" style="font-weight:bold"/>
-                    <h:outputText value="Id" />  
-                    <h:outputText value="#{arquivoBean.arquivoSelecionado.idArquivo}" style="font-weight:bold"/>
-                    <p:commandButton update="tabela" oncomplete="arquivoDialog.hide()" actionListener="#{arquivoBean.adicionarArquivo}" value="Inserir"/>
-                    <p:commandButton update="tabela" oncomplete="arquivoDialog.hide()" actionListener="#{arquivoBean.alterarArquivo}" value="Alterar"/>
-                </h:panelGrid>  
-            </p:dialog>
-            
+        <h:form id="menu">
+            <h:commandButton action="#{caixaBean.novo()}" value="Cadastrar Caixas"/> 
+            <h:commandButton action="#{arquivoBean.novo()}" value="Cadastrar Arquivos"/> 
+            <h:commandButton action="#{tipoArquivoBean.novo()}" value="Cadastrar Tipos de Arquivo"/>
+            <h:commandButton action="#{usuarioBean.novo()}" value="Cadastrar Usuários"/> 
+            <h:commandButton action="#{setorBean.novo()}" value="Cadastrar Setores"/>  
+            <h:commandButton action="#{prateleiraBean.novo()}" value="Cadastrar Prateleiras"/>  
+            <h:commandButton action="#{estanteBean.novo()}" value="Cadastrar Estantes"/>
+            <h:commandButton action="#{salaBean.novo()}" value="Cadastrar Salas"/>
+            <h:commandButton action="#{predioBean.novo()}" value="Cadastrar Predios"/>
+        </h:form>
+        <h:form id="cadastroSala">
+            <h:messages/>
+            <h:inputHidden value="#{arquivoBean.arquivo.idArquivo}"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Conteúdo do Arquivo:" for="contArq"/>
+                <h:inputText id="contArq" label="Conteudo do Arquivo" value="#{arquivoBean.arquivo.conteudoArquivo}" size="30"
+                             required="true" requiredMessage="Preencher o conteúdo do arquivo">
+                </h:inputText>
+                <h:outputLabel value="Caixa:" for="caixa"/>
+                <h:selectOneMenu id="caixa" label="Caixa" value="#{arquivoBean.arquivo.caixa}"
+                                 converter="#{caixaConverter}">
+                    <f:selectItems value="#{caixaBean.caixas}"/>
+                </h:selectOneMenu>
+                <h:outputLabel value="Tipo do Arquivo:" for="tipoArquivo"/>
+                <h:selectOneMenu id="tipoArquivo" value="#{arquivoBean.arquivo.tipoArquivo}" 
+                                 converter="#{tipoArquivoConverter}">
+                    <f:selectItems value="#{tipoArquivoBean.tipoArquivos}"/>
+                </h:selectOneMenu>
+            </h:panelGrid>
+            <h:commandButton action="#{arquivoBean.salvar()}" value="Salvar"/>
         </h:form>
     </h:body>
 </html>

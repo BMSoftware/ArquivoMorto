@@ -8,8 +8,10 @@
     </h:head>
     <h:body>
         <h1>Cadastro de Estantes</h1>
-        <h:form>
+        <h:form id="menu">
             <h:commandButton action="#{caixaBean.novo()}" value="Cadastrar Caixas"/> 
+            <h:commandButton action="#{arquivoBean.novo()}" value="Cadastrar Arquivos"/> 
+            <h:commandButton action="#{tipoArquivoBean.novo()}" value="Cadastrar Tipos de Arquivo"/>
             <h:commandButton action="#{usuarioBean.novo()}" value="Cadastrar Usuários"/> 
             <h:commandButton action="#{setorBean.novo()}" value="Cadastrar Setores"/>  
             <h:commandButton action="#{prateleiraBean.novo()}" value="Cadastrar Prateleiras"/>  

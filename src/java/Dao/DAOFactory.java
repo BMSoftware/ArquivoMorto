@@ -55,6 +55,12 @@ public class DAOFactory {
         setorDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
         return setorDAO;
     }
+    
+    public static TipoArquivoDAO criarTipoArquivoDAO(){
+        TipoArquivoDAO tipoArquivoDAO = new TipoArquivoDAOHib();
+        tipoArquivoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+        return tipoArquivoDAO;
+    }
 
     public static UsuarioDAO criarUsuarioDAO() {
         UsuarioDAO usuarioDAO = new UsuarioDAOHib();

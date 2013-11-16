@@ -26,6 +26,7 @@ public class PredioBean {
     public String salvar() {
         PredioRN predioRN = new PredioRN();
         predioRN.salvar(predio);
+        predio = new Predio();
         return "predio";
     }
 

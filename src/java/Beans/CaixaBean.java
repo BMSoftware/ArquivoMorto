@@ -4,9 +4,12 @@ import Entidade.Caixa;
 import Entidade.Prateleira;
 import Entidade.Setor;
 import RegraDeNegocio.CaixaRN;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -33,7 +36,15 @@ public class CaixaBean {
         CaixaRN caixaRN = new CaixaRN();
         caixaRN.salvar(caixa);
         caixa = new Caixa();
-        return "arquivo";
+        return "caixa";
+    }
+
+    public List<SelectItem> getCaixas() {
+        List<SelectItem> lista = new ArrayList<SelectItem>();
+        for (Caixa caixaAtual : new CaixaRN().list()) {
+            lista.add(new SelectItem(caixaAtual, caixaAtual.getNomeCaixa()));
+        }
+        return lista;
     }
 
     public Caixa getCaixa() {
