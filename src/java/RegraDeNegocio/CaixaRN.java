@@ -28,6 +28,7 @@ public class CaixaRN {
         Integer idCaixa = caixa.getIdCaixa();
         if (idCaixa == null || idCaixa == 0) {
             caixa.setDataArquivamentoCaixa(new Date(System.currentTimeMillis()));
+            //ContextoBean contextoBean = ContextoUtil.getContextoBean();
             ContextoBean contextoBean = ContextoUtil.getContextoBean();
             caixa.setUsuarioArquivou(contextoBean.getUsuarioLogado());
             this.caixaDAO.salvar(caixa);

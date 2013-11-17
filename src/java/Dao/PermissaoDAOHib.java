@@ -33,8 +33,8 @@ public class PermissaoDAOHib implements PermissaoDAO {
     }
 
     @Override
-    public Permissao getPermissao(Integer idPermissao) {
-        return (Permissao) this.session.get(Permissao.class, idPermissao);
+    public Permissao getPermissao(String nomePermissao) {
+        return (Permissao) this.session.get(Permissao.class, nomePermissao);
     }
 
     @Override

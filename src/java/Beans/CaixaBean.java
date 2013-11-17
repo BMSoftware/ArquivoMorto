@@ -9,6 +9,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
 /**
@@ -26,6 +28,7 @@ public class CaixaBean {
     @ManagedProperty(value = "#{setorBean}")
     private SetorBean setorBean;
     private Setor setor;
+    private DataModel listaCaixas;
 
     public String novo() {
         caixa = new Caixa();
@@ -38,6 +41,10 @@ public class CaixaBean {
         caixa = new Caixa();
         return "caixa";
     }
+    
+    public String listarCaixas(){
+        return "listar_caixa";
+    }
 
     public List<SelectItem> getCaixas() {
         List<SelectItem> lista = new ArrayList<SelectItem>();
@@ -45,6 +52,12 @@ public class CaixaBean {
             lista.add(new SelectItem(caixaAtual, caixaAtual.getNomeCaixa()));
         }
         return lista;
+    }
+    
+    public DataModel getListarCaixas(){
+        List<Caixa> lista = new CaixaRN().list();
+        listaCaixas = new ListDataModel(lista);
+        return listaCaixas;
     }
 
     public Caixa getCaixa() {

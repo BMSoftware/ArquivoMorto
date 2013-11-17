@@ -24,6 +24,7 @@ public class GeraTabelas {
             ac.addAnnotatedClass(Predio.class);
             ac.addAnnotatedClass(Sala.class);
             ac.addAnnotatedClass(Setor.class);
+            ac.addAnnotatedClass(TipoArquivo.class);
             ac.addAnnotatedClass(Usuario.class);
             sessionFactory = ac.configure().buildSessionFactory();
             SchemaExport se = new SchemaExport(ac);

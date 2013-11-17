@@ -18,7 +18,7 @@ public interface PermissaoDAO {
 
     public void excluir(Permissao permissao);
 
-    public Permissao getPermissao(Integer idPermissao);
+    public Permissao getPermissao(String nomePermissao);
 
     public List<Permissao> list();
 }

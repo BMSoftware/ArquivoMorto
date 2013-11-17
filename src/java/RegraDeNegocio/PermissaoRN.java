@@ -17,8 +17,8 @@ public class PermissaoRN {
         this.permissaoDAO = DAOFactory.criarPermissaoDAO();
     }
 
-    public Permissao getPermissao(Integer idPermissao) {
-        return this.permissaoDAO.getPermissao(idPermissao);
+    public Permissao getPermissao(String nomePermissao) {
+        return this.permissaoDAO.getPermissao(nomePermissao);
     }
 
     public void salvar(Permissao permissao) {

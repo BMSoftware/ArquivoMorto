@@ -18,16 +18,16 @@ public class TipoArquivoBean {
 
     private TipoArquivo tipoArquivo = new TipoArquivo();
 
-    public String Novo() {
+    public String novo() {
         tipoArquivo = new TipoArquivo();
-        return "tipo_arquivo";
+        return "tipoarquivo";
     }
 
     public String salvar() {
         TipoArquivoRN tipoArquivoRN = new TipoArquivoRN();
         tipoArquivoRN.salvar(tipoArquivo);
         tipoArquivo = new TipoArquivo();
-        return "tipo_arquivo";
+        return "tipoarquivo";
     }
 
     public List<SelectItem> getTipoArquivos() {

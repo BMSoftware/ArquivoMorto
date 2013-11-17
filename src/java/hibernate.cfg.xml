@@ -17,10 +17,7 @@
         <mapping class="Entidade.Usuario"/>
         <mapping class="Entidade.Caixa"/>
         <mapping class="Entidade.TipoArquivo"/>
-        <mapping class="Auditoria.InformacaoRevisao"/>
-        
-        <!--  Configuração Hibernate Envers  -->
-        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-commit-insert"/>
+        <!--  <mapping class="Auditoria.InformacaoRevisao"/>  -->
         
     </session-factory>
 </hibernate-configuration>
