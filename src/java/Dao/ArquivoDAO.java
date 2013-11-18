@@ -21,4 +21,10 @@ public interface ArquivoDAO {
     public Arquivo getArquivo(Integer idArquivo);
 
     public List<Arquivo> list();
+    
+    public List<Arquivo> listTipoArquivo(String descricao);
+    
+    public List<Arquivo> listUsuario(String nomeUsuario);
+    
+    public List<Arquivo> listCaixa (String nomeCaixa);
 }

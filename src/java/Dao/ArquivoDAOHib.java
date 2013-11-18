@@ -2,7 +2,10 @@ package Dao;
 
 import Entidade.Arquivo;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -39,6 +42,38 @@ public class ArquivoDAOHib implements ArquivoDAO {
 
     @Override
     public List<Arquivo> list() {
-        return this.session.createCriteria(Arquivo.class).list();
+        Criteria criteria =  this.session.createCriteria(Arquivo.class);
+        criteria.addOrder(Order.asc("conteudoArquivo"));
+        return criteria.list();
+    }
+
+    @Override
+    public List<Arquivo> listTipoArquivo(String descricao) {
+        Criteria criteria = this.session.createCriteria(Arquivo.class);
+        criteria.createAlias("tipoArquivo", "t");
+        criteria.add(Restrictions.like("t.descricao", "%"+descricao+"%"));
+        criteria.addOrder(Order.asc("t.descricao"));
+        criteria.addOrder(Order.desc("conteudoArquivo"));
+        return criteria.list();
+    }
+
+    @Override
+    public List<Arquivo> listUsuario(String nomeUsuario) {
+        Criteria criteria = this.session.createCriteria(Arquivo.class);
+        criteria.createAlias("usuarioResponsavel", "u");
+        criteria.add(Restrictions.like("u.nomeUsuario", "%"+nomeUsuario+"%"));
+        criteria.addOrder(Order.asc("u.nomeUsuario"));
+        criteria.addOrder(Order.desc("conteudoArquivo"));
+        return criteria.list();
+    }
+
+    @Override
+    public List<Arquivo> listCaixa(String nomeCaixa) {
+        Criteria criteria = this.session.createCriteria(Arquivo.class);
+        criteria.createAlias("caixa", "c");
+        criteria.add(Restrictions.like("c.nomeCaixa", "%"+nomeCaixa+"%"));
+        criteria.addOrder(Order.asc("c.nomeCaixa"));
+        criteria.addOrder(Order.desc("conteudoArquivo"));
+        return criteria.list();
     }
 }

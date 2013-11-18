@@ -41,4 +41,16 @@ public class ArquivoRN {
     public List<Arquivo> list() {
         return this.arquivoDAO.list();
     }
+
+    public List<Arquivo> listTipoArquivo(String descricao) {
+        return this.arquivoDAO.listTipoArquivo(descricao);
+    }
+
+    public List<Arquivo> listUsuario(String nomeUsuario) {
+        return this.arquivoDAO.listUsuario(nomeUsuario);
+    }
+
+    public List<Arquivo> listCaixa(String nomeCaixa) {
+        return this.arquivoDAO.listCaixa(nomeCaixa);
+    }
 }

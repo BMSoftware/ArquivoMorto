@@ -29,6 +29,8 @@ public class CaixaBean {
     private SetorBean setorBean;
     private Setor setor;
     private DataModel listaCaixas;
+    private String filtro = "";
+    private String valorFiltro = "";
 
     public String novo() {
         caixa = new Caixa();
@@ -41,8 +43,8 @@ public class CaixaBean {
         caixa = new Caixa();
         return "caixa";
     }
-    
-    public String listarCaixas(){
+
+    public String listarCaixas() {
         return "listar_caixa";
     }
 
@@ -53,11 +55,24 @@ public class CaixaBean {
         }
         return lista;
     }
-    
-    public DataModel getListarCaixas(){
-        List<Caixa> lista = new CaixaRN().list();
+
+    public DataModel getListarCaixas() {
+        List<Caixa> lista = getListaFiltrada();
         listaCaixas = new ListDataModel(lista);
         return listaCaixas;
+    }
+
+    private List<Caixa> getListaFiltrada() {
+        if (filtro.equals("predio")) {
+            return new CaixaRN().listPredio(valorFiltro);
+        }
+        if (filtro.equals("setor")) {
+            return new CaixaRN().listSetor(valorFiltro);
+        }
+        if (filtro.equals("usuario")) {
+            return new CaixaRN().listUsuario(valorFiltro);
+        }
+        return new CaixaRN().list();
     }
 
     public Caixa getCaixa() {
@@ -105,4 +120,21 @@ public class CaixaBean {
     public void setSetor(Setor setor) {
         this.setor = setor;
     }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
+    }
+
+    public String getValorFiltro() {
+        return valorFiltro;
+    }
+
+    public void setValorFiltro(String valorFiltro) {
+        this.valorFiltro = valorFiltro;
+    }
+
 }

@@ -21,4 +21,10 @@ public interface CaixaDAO {
     public Caixa getCaixa(Integer idCaixa);
 
     public List<Caixa> list();
+    
+    public List<Caixa> listPredio(String nomePredio);
+    
+    public List<Caixa> listSetor(String nomeSetor);
+    
+    public List<Caixa> listUsuario(String nomeUsuario);
 }

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.connection.datasource">java:/comp/env/jdbc/ArquivoMortoDB</property>
-        <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
-        <property name="hibernate.current_session_context_class">thread</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
-        <mapping class="Entidade.Sala"/>
-        <mapping class="Entidade.Estante"/>
-        <mapping class="Entidade.Setor"/>
-        <mapping class="Entidade.Arquivo"/>
-        <mapping class="Entidade.Predio"/>
-        <mapping class="Entidade.Prateleira"/>
-        <mapping class="Entidade.Permissao"/>
-        <mapping class="Entidade.Usuario"/>
-        <mapping class="Entidade.Caixa"/>
-        <mapping class="Entidade.TipoArquivo"/>
-        <!--  <mapping class="Auditoria.InformacaoRevisao"/>  -->
-        
-    </session-factory>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.datasource">java:/comp/env/jdbc/ArquivoMortoDB</property>
+    <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping class="Entidade.Sala"/>
+    <mapping class="Entidade.Estante"/>
+    <mapping class="Entidade.Setor"/>
+    <mapping class="Entidade.Arquivo"/>
+    <mapping class="Entidade.Predio"/>
+    <mapping class="Entidade.Prateleira"/>
+    <mapping class="Entidade.Permissao"/>
+    <mapping class="Entidade.Usuario"/>
+    <mapping class="Entidade.Caixa"/>
+    <mapping class="Entidade.TipoArquivo"/>
+    <!--  <mapping class="Auditoria.InformacaoRevisao"/>  -->
+  </session-factory>
 </hibernate-configuration>

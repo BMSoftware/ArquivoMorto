@@ -28,7 +28,6 @@ public class CaixaRN {
         Integer idCaixa = caixa.getIdCaixa();
         if (idCaixa == null || idCaixa == 0) {
             caixa.setDataArquivamentoCaixa(new Date(System.currentTimeMillis()));
-            //ContextoBean contextoBean = ContextoUtil.getContextoBean();
             ContextoBean contextoBean = ContextoUtil.getContextoBean();
             caixa.setUsuarioArquivou(contextoBean.getUsuarioLogado());
             this.caixaDAO.salvar(caixa);
@@ -43,5 +42,17 @@ public class CaixaRN {
 
     public List<Caixa> list() {
         return this.caixaDAO.list();
+    }
+
+    public List<Caixa> listPredio(String nomePredio) {
+        return this.caixaDAO.listPredio(nomePredio);
+    }
+
+    public List<Caixa> listSetor(String nomeSetor) {
+        return this.caixaDAO.listSetor(nomeSetor);
+    }
+
+    public List<Caixa> listUsuario(String nomeUsuario) {
+        return this.caixaDAO.listUsuario(nomeUsuario);
     }
 }

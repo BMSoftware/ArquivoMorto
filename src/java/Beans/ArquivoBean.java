@@ -8,6 +8,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
 /**
@@ -22,6 +24,9 @@ public class ArquivoBean {
     @ManagedProperty(value = "#{caixaBean}")
     private CaixaBean caixaBean;
     private Caixa caixa;
+    private DataModel listaArquivos;
+    private String filtro = "";
+    private String valorFiltro = "";
 
     public String novo() {
         arquivo = new Arquivo();
@@ -34,6 +39,17 @@ public class ArquivoBean {
         arquivo = new Arquivo();
         return "arquivo";
     }
+    
+    public String excluir(){
+        Arquivo arquivoTemp = (Arquivo)(listaArquivos.getRowData());
+        ArquivoRN arquivoRN = new ArquivoRN();
+        arquivoRN.excluir(arquivoTemp);
+        return "listar_arquivo";
+    }
+
+    public String listarArquivos() {
+        return "listar_arquivo";
+    }
 
     public List<SelectItem> getArquivos() {
         List<SelectItem> lista = new ArrayList<SelectItem>();
@@ -41,6 +57,25 @@ public class ArquivoBean {
             lista.add(new SelectItem(arquivoAtual, arquivoAtual.getConteudoArquivo()));
         }
         return lista;
+    }
+
+    public DataModel getListarArquivos() {
+        List<Arquivo> lista = getListaFiltrada();
+        listaArquivos = new ListDataModel(lista);
+        return listaArquivos;
+    }
+
+    private List<Arquivo> getListaFiltrada() {
+        if (filtro.equals("caixa")) {
+            return new ArquivoRN().listCaixa(valorFiltro);
+        }
+        if (filtro.equals("tipoArquivo")) {
+            return new ArquivoRN().listTipoArquivo(valorFiltro);
+        }
+        if (filtro.equals("usuario")) {
+            return new ArquivoRN().listUsuario(valorFiltro);
+        }
+        return new ArquivoRN().list();
     }
 
     public Arquivo getArquivo() {
@@ -68,6 +103,22 @@ public class ArquivoBean {
 
     public void setCaixa(Caixa caixa) {
         this.caixa = caixa;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
+    }
+
+    public String getValorFiltro() {
+        return valorFiltro;
+    }
+
+    public void setValorFiltro(String valorFiltro) {
+        this.valorFiltro = valorFiltro;
     }
 
 }

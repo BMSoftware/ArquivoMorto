@@ -2,6 +2,8 @@ package Dao;
 
 import Entidade.Caixa;
 import java.util.List;
+import org.hibernate.Query;
+
 import org.hibernate.Session;
 
 /**
@@ -39,6 +41,35 @@ public class CaixaDAOHib implements CaixaDAO {
 
     @Override
     public List<Caixa> list() {
-        return this.session.createCriteria(Caixa.class).list();
+        Query query = this.session.createQuery("from Caixa c order by c.nomeCaixa asc");
+        return query.list();
+    }
+
+    @Override
+    public List<Caixa> listPredio(String nomePredio) {
+        Query query = this.session.createQuery("from Caixa c WHERE "
+                + "c.prateleira.estante.sala.predio.nomePredio LIKE :nomePredio "
+                + "ORDER BY c.prateleira.estante.sala.predio.nomePredio asc, "
+                + "c.nomeCaixa desc");
+        query.setParameter("nomePredio", "%" + nomePredio + "%");
+        return query.list();
+    }
+
+    @Override
+    public List<Caixa> listSetor(String nomeSetor) {
+        Query query = this.session.createQuery("from Caixa c where "
+                + "c.setor.nomeSetor LIKE :nomeSetor ORDER BY c.setor.nomeSetor asc,"
+                + "c.nomeCaixa desc");
+        query.setParameter("nomeSetor", "%" + nomeSetor + "%");
+        return query.list();
+    }
+
+    @Override
+    public List<Caixa> listUsuario(String nomeUsuario) {
+        Query query = this.session.createQuery("from Caixa c where "
+                + "c.usuarioArquivou.nomeUsuario LIKE :nomeUsuario order by "
+                + "c.usuarioArquivou.nomeUsuario asc, c.dataArquivamentoCaixa desc");
+        query.setParameter("nomeUsuario", "%" + nomeUsuario + "%");
+        return query.list();
     }
 }

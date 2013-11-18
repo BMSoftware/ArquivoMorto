@@ -9,6 +9,8 @@
         <h1>Arquivo Morto</h1>
         Usuário Logado: #{contextoBean.usuarioLogado.nomeUsuario}
         <h:form>
+            <h:outputLabel value="Cadastros"/>
+            <br/>
             <h:commandButton action="#{caixaBean.novo()}" value="Cadastrar Caixas"/> 
             <h:commandButton action="#{arquivoBean.novo()}" value="Cadastrar Arquivos"/> 
             <h:commandButton action="#{tipoArquivoBean.novo()}" value="Cadastrar Tipos de Arquivo"/> 
@@ -19,7 +21,11 @@
             <h:commandButton action="#{salaBean.novo()}" value="Cadastrar Salas"/>
             <h:commandButton action="#{predioBean.novo()}" value="Cadastrar Predios"/>
             <br/>
+            <h:outputLabel value="Relatórios"/>
+            <br/>
             <h:commandButton action="#{caixaBean.listarCaixas()}" value="Listar Caixas"/>
+            <h:commandButton action="#{arquivoBean.listarArquivos()}" value="Listar Arquivos"/>
+            <br/>
         </h:form>
     </h:body>
 </html>
